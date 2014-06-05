@@ -1,0 +1,12 @@
+Sailfish Third Party API
+========================
+
+To update this package when new requirements are allowed:
+
+ 1.) git submodule update
+ 2.) git submodule foreach git pull origin master
+ 3.) Update API version in sailfish-api.spec.in (Version: ...)
+ 4.) python update.py
+ 5.) Commit all changes with [api] Bump to API version ...
+ 6.) Tag new version
+
