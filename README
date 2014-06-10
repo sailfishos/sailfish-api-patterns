@@ -1,12 +1,19 @@
-Sailfish Third Party API
-========================
+Sailfish Third Party API Patterns
+=================================
 
 To update this package when new requirements are allowed:
 
  1.) git submodule update
  2.) git submodule foreach git pull origin master
- 3.) Update API version in sailfish-api.spec.in (Version: ...)
+ 3.) Update API_LEVEL in update.py
  4.) python update.py
  5.) Commit all changes with [api] Bump to API version ...
  6.) Tag new version
 
+The old .yaml files should be kept when the API level is increased, packages
+depending on new API levels can depend on "sailfish-api-2" (for example),
+whereas old packages might still depend on "sailfish-api-1".
+
+All patterns also provide "sailfish-api = <version>", e.g. "sailfish-api-1"
+provides "sailfish-api = 1", so apps can also use that to depend on the
+Sailfish API without specifying the API level in the package name.

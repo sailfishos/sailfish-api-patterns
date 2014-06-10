@@ -10,10 +10,13 @@ import sys
 
 REQUIRES = 'sdk-harbour-rpmvalidator/allowed_requires.conf'
 
-SOURCE_FILENAME = 'sailfish-api.spec.in'
-TARGET_FILENAME = 'rpm/sailfish-api.spec'
+# Bump this whenever the API gets new items
+API_LEVEL = 1
 
-MARKER = '# -- REQUIRES HERE --'
+SOURCE_FILENAME = 'template.yaml.in'
+TARGET_FILENAME = 'patterns/sailfish-api-{}.yaml'.format(API_LEVEL)
+
+MARKER = '# -- INSERT PACKAGES HERE --'
 
 def read_file(filename):
     return open(filename).read().splitlines()
@@ -36,11 +39,11 @@ def inject_requires(filename, requirements):
             yield '# Begin requirements inserted by {}'.format(sys.argv[0])
             for requirement in requirements:
                 print(' - {}'.format(requirement))
-                yield 'Requires: {}'.format(requirement)
+                yield '    - {}'.format(requirement)
             yield '# End requirements inserted by {}'.format(sys.argv[0])
             continue
 
-        yield line
+        yield line.replace('%LEVEL%', str(API_LEVEL))
 
 print('Writing: {}'.format(TARGET_FILENAME))
 with open(TARGET_FILENAME, 'w') as fp:
