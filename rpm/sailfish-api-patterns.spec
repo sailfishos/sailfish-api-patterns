@@ -4,7 +4,7 @@ Version: 1.0.1
 Release: 1
 Source: %{name}-%{version}.tar.gz
 URL: https://harbour.jolla.com/faq
-License: ISC
+License: GPL
 Group: Development/System
 BuildArch: noarch
 BuildRequires: repomd-pattern-builder

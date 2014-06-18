@@ -1,6 +1,39 @@
 Sailfish Third Party API Patterns
 =================================
 
+This repository contains some tooling that we use to build an API patterns file
+that can be pre-installed on the device.
+
+Technical background
+--------------------
+
+This is required so that applications that would otherwise drag in a new
+dependency already work on first launch (the booster process will not have
+"seen" the Qt/QML plug-in at the time it was launched), if we don't do this,
+applications could end up without some plugins on first launch due to the
+way boosting and mapplauncherd works:
+
+  time ---- >
+
+  A ..... B ..... C
+  ^       ^       ^
+  |       |       user taps icon, doesn't work on first run
+  |       application and new plugin gets installed
+  booster process launches
+
+By making sure that all possible Qt plug-ins (possible as in "can be depended
+on by third party apps") are already installed in the base image, the booster
+process will always "see" all allowed plug-ins.
+
+Because of this, it is right now NOT important that other libraries and
+runtimes are installed with this pattern - they can just be pulled in as
+dependencies at installation time (e.g. SDL2), and no booster process exists
+for these libraries at the moment.
+
+
+Updating the package
+--------------------
+
 To update this package when new requirements are allowed:
 
  1.) git submodule update
