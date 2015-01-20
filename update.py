@@ -25,7 +25,7 @@ import sys
 REQUIRES = 'sdk-harbour-rpmvalidator/allowed_requires.conf'
 
 # Bump this whenever the API gets new items
-API_LEVEL = 1
+API_LEVEL = 2
 
 SOURCE_FILENAME = 'template.yaml.in'
 TARGET_FILENAME = 'patterns/sailfish-api-{}.yaml'.format(API_LEVEL)

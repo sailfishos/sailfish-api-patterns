@@ -1,6 +1,6 @@
 Summary: Sailfish OS Harbour Third Party API Patterns
 Name: sailfish-api-patterns
-Version: 1.0.2
+Version: 1.0.3
 Release: 1
 Source: %{name}-%{version}.tar.gz
 URL: https://harbour.jolla.com/faq
