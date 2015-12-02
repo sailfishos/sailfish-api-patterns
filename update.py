@@ -24,8 +24,11 @@ import sys
 
 REQUIRES = 'sdk-harbour-rpmvalidator/allowed_requires.conf'
 
+fixed_requires = ["libsailfishapp", "SDL2", "SDL2_gfx", "SDL2_image",
+                  "SDL2_mixer", "SDL2_net", "SDL2_ttf"]
+
 # Bump this whenever the API gets new items
-API_LEVEL = 2
+API_LEVEL = 3
 
 SOURCE_FILENAME = 'template.yaml.in'
 TARGET_FILENAME = 'patterns/sailfish-api-{}.yaml'.format(API_LEVEL)
@@ -50,7 +53,8 @@ def want_requirement(requirement):
     # If in doubt, don't add the requirement to the pattern
     return False
 
-qt5_requires = [x for x in read_file(REQUIRES) if want_requirement(x)]
+requires = [x for x in read_file(REQUIRES) if want_requirement(x)]
+requires.extend(fixed_requires)
 
 def inject_requires(filename, requirements):
     for line in open(filename).read().splitlines():
@@ -66,5 +70,5 @@ def inject_requires(filename, requirements):
 
 print('Writing: {}'.format(TARGET_FILENAME))
 with open(TARGET_FILENAME, 'w') as fp:
-    for line in inject_requires(SOURCE_FILENAME, qt5_requires):
+    for line in inject_requires(SOURCE_FILENAME, requires):
         print(line, file=fp)
