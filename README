@@ -25,12 +25,6 @@ By making sure that all possible Qt plug-ins (possible as in "can be depended
 on by third party apps") are already installed in the base image, the booster
 process will always "see" all allowed plug-ins.
 
-Because of this, it is right now NOT important that other libraries and
-runtimes are installed with this pattern - they can just be pulled in as
-dependencies at installation time (e.g. SDL2), and no booster process exists
-for these libraries at the moment.
-
-
 Updating the package
 --------------------
 
