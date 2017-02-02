@@ -37,11 +37,13 @@ Requires: SDL2_net
 Requires: SDL2_ttf
 # End requirements inserted by ./update.py
 
-%build
-
-rm -r $RPM_BUILD_ROOT
-
 %description
 Pre-installed Qt plugins and packages for allowed Harbour APIs.
+
+%prep
+
+%build
+
+%install
 
 %files
