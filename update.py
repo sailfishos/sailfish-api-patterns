@@ -1,7 +1,6 @@
 #!/usr/bin/python
-# Create YAML pattern files from allowed_requires.conf
-# Copyright (c) 2014 Jolla Ltd.
-# Contact: Thomas Perl <thomas.perl@jolla.com>
+# Create api requirement files from allowed_requires.conf
+# Copyright (c) 2014-2021 Jolla Ltd.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -30,11 +29,6 @@ fixed_requires = ["libsailfishapp", "SDL2", "SDL2_gfx", "SDL2_image",
 # Bump this whenever the API gets new items
 API_LEVEL = 3
 
-# PATTERN BEGIN
-PATT_SOURCE_FILENAME = 'template.yaml.in'
-PATT_TARGET_FILENAME = 'patterns/sailfish-api-{}.yaml'.format(API_LEVEL)
-# PATTERN END
-
 SPEC_SOURCE_FILENAME = 'template.spec.in'
 SPEC_TARGET_FILENAME = 'rpm/patterns-sailfish-api-{}.spec'.format(API_LEVEL)
 
@@ -60,25 +54,6 @@ def want_requirement(requirement):
 
 requires = [x for x in read_file(REQUIRES) if want_requirement(x)]
 requires.extend(fixed_requires)
-
-# PATTERN BEGIN
-def inject_requires_patt(filename, requirements):
-    for line in open(filename).read().splitlines():
-        if line == MARKER:
-            yield '# Begin requirements inserted by {}'.format(sys.argv[0])
-            for requirement in requirements:
-                print(' - {}'.format(requirement))
-                yield '    - {}'.format(requirement)
-            yield '# End requirements inserted by {}'.format(sys.argv[0])
-            continue
-
-        yield line.replace('%LEVEL%', str(API_LEVEL))
-
-print('Writing: {}'.format(PATT_TARGET_FILENAME))
-with open(PATT_TARGET_FILENAME, 'w') as fp:
-    for line in inject_requires_patt(PATT_SOURCE_FILENAME, requires):
-        print(line, file=fp)
-# PATTERN END
 
 def inject_requires_spec(filename, requirements):
     for line in open(filename).read().splitlines():

@@ -1,7 +1,0 @@
-Summary: Sailfish API Level %LEVEL%
-Description: Pre-installed Qt plugins and packages for allowed Harbour APIs.
-Name: sailfish-api-%LEVEL%
-Provides:
-    - sailfish-api = %LEVEL%
-Requires:
-# -- INSERT PACKAGES HERE --

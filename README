@@ -37,9 +37,8 @@ To update this package when new requirements are allowed:
  5.) Commit all changes with [api] Bump to API version ...
  6.) Tag new version
 
-The old .yaml files should be kept when the API level is increased, packages
-depending on new API levels can depend on "sailfish-api-2" (for example),
-whereas old packages might still depend on "sailfish-api-1".
+Packages depending on new API levels can depend on "sailfish-api-2" 
+(for example), whereas old packages might still depend on "sailfish-api-1".
 
 All patterns also provide "sailfish-api = <version>", e.g. "sailfish-api-1"
 provides "sailfish-api = 1", so apps can also use that to depend on the
