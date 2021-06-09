@@ -4,7 +4,6 @@ Version: 1.0.0
 Release: 1
 Source: %{name}-%{version}.tar.gz
 License: GPLv2
-Group: Development/System
 BuildArch: noarch
 Provides: sailfish-api = %LEVEL%
 # -- INSERT PACKAGES HERE --
