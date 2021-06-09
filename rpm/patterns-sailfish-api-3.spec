@@ -40,6 +40,7 @@ Requires: SDL2_ttf
 Pre-installed Qt plugins and packages for allowed Harbour APIs.
 
 %prep
+%autosetup -n %{name}-%{version}
 
 %build
 
