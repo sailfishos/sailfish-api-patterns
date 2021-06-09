@@ -4,7 +4,6 @@ Version: 3.0.0
 Release: 2
 Source: %{name}-%{version}.tar.gz
 License: GPLv2
-Group: Development/System
 BuildArch: noarch
 Provides: sailfish-api = 3
 # Begin requirements inserted by ./update.py
@@ -47,3 +46,4 @@ Pre-installed Qt plugins and packages for allowed Harbour APIs.
 %install
 
 %files
+%license LICENSE

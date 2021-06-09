@@ -1,10 +1,9 @@
 Summary: Sailfish API Level %LEVEL%
-Name: sailfish-api-%LEVEL%
-Version: 1.0.0
-Release: 1
+Name: patterns-sailfish-api-%LEVEL%
+Version: 3.0.0
+Release: 2
 Source: %{name}-%{version}.tar.gz
 License: GPLv2
-Group: Development/System
 BuildArch: noarch
 Provides: sailfish-api = %LEVEL%
 # -- INSERT PACKAGES HERE --
@@ -19,3 +18,4 @@ Pre-installed Qt plugins and packages for allowed Harbour APIs.
 %install
 
 %files
+%license LICENSE
