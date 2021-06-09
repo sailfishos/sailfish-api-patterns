@@ -46,3 +46,4 @@ Pre-installed Qt plugins and packages for allowed Harbour APIs.
 %install
 
 %files
+%license LICENSE
