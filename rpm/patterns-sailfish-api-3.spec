@@ -11,7 +11,6 @@ Requires: qt5-qtdeclarative-import-xmllistmodel
 Requires: qt5-qtdeclarative-import-folderlistmodel
 Requires: qt5-qtdeclarative-import-localstorageplugin
 Requires: qt5-qtdeclarative-import-multimedia
-Requires: qt5-qtqml-import-webkitplugin
 Requires: qt5-qtdeclarative-import-particles2
 Requires: qt5-qtdeclarative-qtquickparticles
 Requires: qt5-qtsvg
